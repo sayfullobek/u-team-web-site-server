@@ -13,6 +13,6 @@ import lombok.*;
 @Entity
 @EqualsAndHashCode(callSuper = true)
 public class Partners extends AbsNameEntity {
-    @Column(nullable = false)
+    @Column
     private String logo;
 }
