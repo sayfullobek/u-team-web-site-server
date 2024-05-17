@@ -19,7 +19,7 @@ public class Post extends AbsEntity {
     @Column(nullable = false, length = 10000)
     private String description;
 
-    @Column(nullable = false)
+    @Column
     private String image;
 
 }
