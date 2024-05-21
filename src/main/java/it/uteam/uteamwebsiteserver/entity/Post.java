@@ -1,6 +1,7 @@
 package it.uteam.uteamwebsiteserver.entity;
 
 import it.uteam.uteamwebsiteserver.entity.templates.AbsEntity;
+import it.uteam.uteamwebsiteserver.entity.templates.AbsNameEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.*;
@@ -12,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Post extends AbsEntity {
+public class Post extends AbsNameEntity {
     @Column(nullable = false)
     private String text;
 
