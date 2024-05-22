@@ -7,6 +7,8 @@ import org.springframework.data.rest.core.config.Projection;
 public interface CustomPost {
     Integer getId();
 
+    String getName();
+
     String getText();
 
     String getDescription();
