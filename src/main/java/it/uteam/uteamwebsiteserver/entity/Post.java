@@ -20,7 +20,6 @@ public class Post extends AbsNameEntity {
     @Column(nullable = false, length = 10000)
     private String description;
 
-    @Column
     private String image;
 
 }

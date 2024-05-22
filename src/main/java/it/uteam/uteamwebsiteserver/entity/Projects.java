@@ -13,7 +13,6 @@ import lombok.*;
 @Builder
 @Entity
 public class Projects extends AbsNameEntity {
-    @Column
     private String image;
 
     @Column(nullable = false)
