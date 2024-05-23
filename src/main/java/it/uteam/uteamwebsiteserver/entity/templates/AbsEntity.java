@@ -1,9 +1,6 @@
 package it.uteam.uteamwebsiteserver.entity.templates;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,8 +21,14 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AbsEntity {
     @Id
-    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
+//    @GenericGenerator(
+//            name = "Incremental",
+//            strategy = "org.hibernate.id.IncrementGenerator"
+//    )
+//    @Column(name = "id", updatable = false, nullable = false, insertable = false, unique = true)
+    private Integer id;
 
     @Column(nullable = false, updatable = false)
     @CreationTimestamp

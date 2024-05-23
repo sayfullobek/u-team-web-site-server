@@ -12,7 +12,7 @@ import java.util.UUID;
 @Builder
 public class PetitionDto {
     private UUID id;
-    private String FIO;
+    private String fio;
     private String phoneNumber;
     private String text;
     private PetitionStatus status;

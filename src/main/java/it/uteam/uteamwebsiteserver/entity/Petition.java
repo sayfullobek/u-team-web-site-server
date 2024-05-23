@@ -17,7 +17,7 @@ import lombok.*;
 @Entity
 public class Petition extends AbsEntity { //ariza
     @Column(nullable = false)
-    private String FIO;
+    private String fio;
 
     @Column(nullable = false)
     private String phoneNumber;

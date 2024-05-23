@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 @Service
@@ -25,7 +27,7 @@ public class PetitionService {
     }
 
     public ApiResponse addPetition(PetitionDto petitionDto) {
-        if (petitionDto.getFIO().trim().isEmpty()) {
+        if (petitionDto.getFio().trim().isEmpty()) {
             return sendMessage("F.I.O bo'lishi shart", false, 400);
         }
         try {
@@ -39,20 +41,21 @@ public class PetitionService {
         if (petitionDto.getText().trim().isEmpty()) {
             return sendMessage("Iltimos izohni to'liq qoldiring", false, 400);
         }
+        Petition build = Petition.builder()
+                .fio(petitionDto.getFio())
+                .phoneNumber(petitionDto.getPhoneNumber())
+                .text(petitionDto.getText())
+                .status(PetitionStatus.REGISTER)
+                .build();
         petitionRepository.save(
-                Petition.builder()
-                        .FIO(petitionDto.getFIO())
-                        .phoneNumber(petitionDto.getPhoneNumber())
-                        .text(petitionDto.getText())
-                        .status(PetitionStatus.REGISTER)
-                        .build()
+            build
         );
         return sendMessage("Ariza muvaffaqiyatli yuborildi", true, 200);
     }
 
     public ApiResponse changeStatus(UUID id, PetitionDto petitionDto) {
         Petition petition = petitionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Bunday ariza topilmadi"));
-        petition.setStatus(petition.getStatus());
+        petition.setStatus(petitionDto.getStatus());
         petitionRepository.save(petition);
         return sendMessage("Muvaffaqiyatli status almashtirildi", true, 200);
     }
